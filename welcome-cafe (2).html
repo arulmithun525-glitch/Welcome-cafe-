@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Welcome Cafee – Best Coffee Shop in Kosakulam, Madurai</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --cream:#FAF6EF;
+  --warm:#F5ECD7;
+  --brown:#3B2314;
+  --mid-brown:#7B4A2D;
+  --gold:#C9873A;
+  --gold-light:#E8B86D;
+  --sage:#8A9E7A;
+  --text:#2A1A0E;
+  --muted:#9A7E68;
+  --white:#fff;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* ── GRAIN OVERLAY ── */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.4;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:76px;background:rgba(250,246,239,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(59,35,20,0.08);}
+.nav-logo{display:flex;align-items:center;gap:0.6rem;}
+.nav-logo img{height:44px;width:44px;object-fit:contain;border-radius:50%;}
+.nav-logo-text{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--brown);letter-spacing:0.02em;}
+.nav-logo-text span{color:var(--gold);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{color:var(--mid-brown);text-decoration:none;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;transition:color 0.2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-3px;width:0;height:1.5px;background:var(--gold);transition:width 0.3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-links a:hover::after{width:100%;}
+.nav-order{background:var(--brown);color:var(--cream);border:none;padding:0.6rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:0.8rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;border-radius:2px;}
+.nav-order:hover{background:var(--gold);}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:grid;grid-template-columns:55% 45%;position:relative;overflow:hidden;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:120px 5% 5rem 8%;position:relative;}
+.hero-left::after{content:'';position:absolute;right:0;top:10%;bottom:10%;width:1px;background:linear-gradient(to bottom,transparent,rgba(59,35,20,0.15),transparent);}
+.hero-eyebrow{font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-style:italic;color:var(--gold);letter-spacing:0.12em;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:block;height:1px;width:30px;background:var(--gold-light);}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,5.5vw,5.5rem);font-weight:900;line-height:1.02;color:var(--brown);margin-bottom:1.2rem;letter-spacing:-0.01em;}
+.hero-title em{font-style:italic;color:var(--gold);}
+.hero-desc{font-size:1rem;line-height:1.85;color:var(--muted);max-width:420px;margin-bottom:2.5rem;font-weight:300;}
+.hero-cta{display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;}
+.btn-primary{background:var(--brown);color:var(--cream);border:none;padding:1rem 2.2rem;font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background 0.25s,transform 0.15s;text-decoration:none;display:inline-block;}
+.btn-primary:hover{background:var(--gold);transform:translateY(-2px);}
+.btn-secondary{background:transparent;color:var(--brown);border:1.5px solid rgba(59,35,20,0.3);padding:0.95rem 2rem;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:border-color 0.2s,color 0.2s;text-decoration:none;display:inline-block;}
+.btn-secondary:hover{border-color:var(--gold);color:var(--gold);}
+.hero-pills{display:flex;gap:0.6rem;margin-top:2.5rem;flex-wrap:wrap;}
+.pill{background:var(--warm);border:1px solid rgba(59,35,20,0.1);padding:0.4rem 1rem;font-size:0.75rem;letter-spacing:0.08em;color:var(--mid-brown);border-radius:50px;font-weight:500;}
+.hero-right{position:relative;overflow:hidden;}
+.hero-photo-main{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(0.9);}
+.hero-photo-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(250,246,239,0.15) 0%,transparent 40%);}
+.hero-badge{position:absolute;bottom:2.5rem;left:2rem;background:var(--cream);border:1px solid rgba(59,35,20,0.12);padding:1.2rem 1.5rem;box-shadow:0 8px 32px rgba(59,35,20,0.12);}
+.hero-badge-rating{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--brown);line-height:1;}
+.hero-badge-stars{color:var(--gold);font-size:0.9rem;margin:0.2rem 0;}
+.hero-badge-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);}
+.hero-float-tag{position:absolute;top:3rem;right:2rem;background:var(--gold);color:var(--white);padding:0.7rem 1.2rem;font-family:'Cormorant Garamond',serif;font-size:0.85rem;font-style:italic;letter-spacing:0.06em;transform:rotate(2deg);}
+
+/* ── MARQUEE ── */
+.marquee-wrap{background:var(--brown);padding:0.85rem 0;overflow:hidden;white-space:nowrap;}
+.marquee-inner{display:inline-flex;animation:marquee 28s linear infinite;}
+.marquee-inner span{font-family:'Cormorant Garamond',serif;font-size:0.95rem;font-style:italic;letter-spacing:0.14em;color:var(--gold-light);padding:0 2rem;}
+.marquee-dot{color:rgba(201,135,58,0.4);}
+@keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* ── SECTIONS ── */
+section{padding:6rem 8%;}
+.section-label{font-family:'Cormorant Garamond',serif;font-size:0.85rem;font-style:italic;letter-spacing:0.18em;color:var(--gold);margin-bottom:0.8rem;display:flex;align-items:center;gap:0.8rem;}
+.section-label::before{content:'';display:block;width:24px;height:1px;background:var(--gold-light);}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:800;color:var(--brown);line-height:1.05;margin-bottom:1.2rem;}
+.section-title em{font-style:italic;color:var(--gold);}
+
+/* ── ABOUT ── */
+.about{background:var(--warm);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.about-images{position:relative;height:520px;}
+.about-img-main{position:absolute;top:0;left:0;width:72%;height:85%;object-fit:cover;box-shadow:0 16px 48px rgba(59,35,20,0.15);}
+.about-img-accent{position:absolute;bottom:0;right:0;width:52%;height:55%;object-fit:cover;box-shadow:0 8px 24px rgba(59,35,20,0.12);border:4px solid var(--cream);}
+.about-since{position:absolute;top:50%;left:64%;transform:translate(-50%,-50%);background:var(--gold);color:var(--white);width:90px;height:90px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 4px 16px rgba(201,135,58,0.4);}
+.about-since-year{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;line-height:1;}
+.about-since-text{font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;margin-top:0.15rem;}
+.about-text p{font-size:0.97rem;line-height:1.9;color:#6B4E3A;margin-bottom:1rem;font-weight:300;}
+.about-pillars{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:2rem;}
+.pillar{text-align:center;padding:1.2rem 0.8rem;background:var(--cream);border-radius:4px;}
+.pillar-icon{font-size:1.4rem;margin-bottom:0.4rem;}
+.pillar-name{font-family:'Playfair Display',serif;font-size:0.95rem;font-weight:700;color:var(--brown);}
+.pillar-desc{font-size:0.72rem;color:var(--muted);margin-top:0.2rem;line-height:1.4;}
+
+/* ── MENU ── */
+.menu{background:var(--cream);}
+.menu-tabs{display:flex;gap:0;margin-bottom:3rem;border-bottom:2px solid rgba(59,35,20,0.08);flex-wrap:wrap;}
+.menu-tab{background:none;border:none;padding:0.9rem 1.6rem;font-family:'DM Sans',sans-serif;font-size:0.82rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:color 0.2s;position:relative;font-weight:500;}
+.menu-tab.active,.menu-tab:hover{color:var(--gold);}
+.menu-tab.active::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:var(--gold);}
+.menu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.menu-card{background:var(--white);border-radius:6px;overflow:hidden;box-shadow:0 2px 12px rgba(59,35,20,0.06);transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;}
+.menu-card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(59,35,20,0.14);}
+.menu-card-img{width:100%;height:180px;object-fit:cover;display:block;filter:saturate(0.92);}
+.menu-card-body{padding:1rem 1.1rem 1.2rem;}
+.menu-card-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--brown);margin-bottom:0.3rem;}
+.menu-card-desc{font-size:0.78rem;color:var(--muted);line-height:1.5;font-weight:300;}
+.menu-card-tag{display:inline-block;margin-top:0.6rem;background:var(--warm);font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);padding:0.25rem 0.6rem;border-radius:50px;font-weight:500;}
+.menu-more{text-align:center;margin-top:2.5rem;}
+
+/* ── SPECIALS ── */
+.specials{background:var(--brown);color:var(--cream);}
+.specials .section-label{color:var(--gold-light);}
+.specials .section-title{color:var(--cream);}
+.specials-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;margin-top:3rem;}
+.special-card{text-align:center;padding:2rem 1rem;border:1px solid rgba(250,246,239,0.1);border-radius:4px;transition:border-color 0.3s,background 0.3s;cursor:pointer;}
+.special-card:hover{border-color:var(--gold);background:rgba(201,135,58,0.08);}
+.special-icon{width:70px;height:70px;border-radius:50%;object-fit:cover;margin:0 auto 1rem;display:block;border:2px solid rgba(201,135,58,0.3);}
+.special-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--cream);margin-bottom:0.4rem;}
+.special-desc{font-size:0.75rem;color:rgba(250,246,239,0.5);line-height:1.5;font-weight:300;}
+
+/* ── GALLERY ── */
+.gallery{background:var(--warm);padding:6rem 0;}
+.gallery-header{padding:0 8%;margin-bottom:2.5rem;}
+.gallery-grid{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:220px 220px;gap:4px;}
+.gallery-item{overflow:hidden;position:relative;cursor:pointer;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s,filter 0.4s;filter:saturate(0.85);}
+.gallery-item:hover img{transform:scale(1.07);filter:saturate(1.1);}
+.gallery-item:nth-child(1){grid-column:span 2;grid-row:span 2;}
+.gallery-item:nth-child(4){grid-column:span 2;}
+.gallery-overlay{position:absolute;inset:0;background:rgba(59,35,20,0);transition:background 0.3s;display:flex;align-items:center;justify-content:center;}
+.gallery-item:hover .gallery-overlay{background:rgba(59,35,20,0.25);}
+.gallery-overlay span{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--white);opacity:0;transition:opacity 0.3s;letter-spacing:0.08em;}
+.gallery-item:hover .gallery-overlay span{opacity:1;}
+
+/* ── TESTIMONIALS ── */
+.testimonials{background:var(--cream);}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+.testi-card{background:var(--warm);padding:2.2rem;border-radius:4px;position:relative;}
+.testi-card::before{content:'\201C';font-family:'Playfair Display',serif;font-size:5rem;color:var(--gold-light);position:absolute;top:-0.5rem;left:1.2rem;line-height:1;opacity:0.5;}
+.testi-stars{color:var(--gold);font-size:0.95rem;margin-bottom:1rem;letter-spacing:0.1rem;}
+.testi-text{font-size:0.92rem;line-height:1.85;color:#6B4E3A;font-style:italic;font-family:'Cormorant Garamond',serif;font-weight:300;margin-bottom:1.5rem;font-size:1.05rem;}
+.testi-author{display:flex;align-items:center;gap:0.8rem;}
+.testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem;color:var(--white);font-weight:700;flex-shrink:0;}
+.testi-name{font-family:'DM Sans',sans-serif;font-size:0.88rem;font-weight:500;color:var(--brown);}
+.testi-tag{font-size:0.72rem;color:var(--muted);margin-top:0.1rem;}
+
+/* ── DAILY ESCAPE ── */
+.escape{background:var(--brown);display:grid;grid-template-columns:1fr 1fr;min-height:480px;}
+.escape-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 6% 5rem 8%;}
+.escape-left .section-label{color:var(--gold-light);}
+.escape-left .section-title{color:var(--cream);}
+.escape-left p{font-size:0.95rem;line-height:1.9;color:rgba(250,246,239,0.65);margin-bottom:1rem;font-weight:300;max-width:420px;}
+.escape-left .btn-primary{background:var(--gold);color:var(--white);margin-top:0.5rem;}
+.escape-left .btn-primary:hover{background:var(--gold-light);}
+.escape-right{position:relative;overflow:hidden;}
+.escape-right img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.75) saturate(0.8);}
+.escape-right-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--brown) 0%,transparent 30%);}
+
+/* ── CONTACT ── */
+.contact{background:var(--cream);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;margin-top:3rem;}
+.contact-info{display:flex;flex-direction:column;gap:2rem;}
+.contact-item{display:flex;gap:1.2rem;align-items:flex-start;}
+.contact-icon{width:48px;height:48px;background:var(--warm);border:1px solid rgba(59,35,20,0.12);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.3rem;}
+.contact-label{font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem;font-weight:500;}
+.contact-value{font-size:0.95rem;line-height:1.7;color:var(--brown);}
+.contact-value a{color:var(--gold);text-decoration:none;}
+.contact-value a:hover{text-decoration:underline;}
+.contact-socials{display:flex;gap:0.8rem;margin-top:0.5rem;}
+.social-link{width:38px;height:38px;background:var(--warm);border:1px solid rgba(59,35,20,0.1);border-radius:4px;display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--mid-brown);font-size:0.8rem;font-weight:600;transition:background 0.2s,color 0.2s;}
+.social-link:hover{background:var(--gold);color:var(--white);}
+.map-frame{width:100%;height:340px;border:0;border-radius:6px;filter:saturate(0.7);}
+.whatsapp-float{position:fixed;bottom:2rem;right:2rem;z-index:200;width:54px;height:54px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,0.45);text-decoration:none;font-size:1.5rem;animation:pulse 2.5s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 4px 16px rgba(37,211,102,0.45);}50%{box-shadow:0 4px 28px rgba(37,211,102,0.7);}}
+
+/* ── FOOTER ── */
+footer{background:var(--text);color:var(--cream);padding:3.5rem 8% 2rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand-name{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:800;margin-bottom:0.6rem;}
+.footer-brand-name span{color:var(--gold);}
+.footer-brand-desc{font-size:0.83rem;line-height:1.7;color:rgba(250,246,239,0.45);max-width:240px;}
+.footer-col h4{font-family:'DM Sans',sans-serif;font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1rem;font-weight:500;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:0.6rem;}
+.footer-col ul li a{color:rgba(250,246,239,0.5);text-decoration:none;font-size:0.85rem;transition:color 0.2s;}
+.footer-col ul li a:hover{color:var(--gold-light);}
+.footer-bottom{border-top:1px solid rgba(250,246,239,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:0.78rem;color:rgba(250,246,239,0.3);}
+.hours-badge{background:rgba(201,135,58,0.15);border:1px solid rgba(201,135,58,0.25);padding:0.35rem 0.9rem;font-size:0.72rem;color:var(--gold-light);letter-spacing:0.1em;border-radius:50px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .menu-grid{grid-template-columns:repeat(3,1fr);}
+  .specials-grid{grid-template-columns:repeat(3,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;grid-template-rows:auto 55vw;}
+  .hero-left{padding:100px 6% 3rem;}
+  .hero-left::after{display:none;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:3rem;}
+  .escape{grid-template-columns:1fr;}
+  .escape-right{display:none;}
+  .testimonials-grid{grid-template-columns:1fr 1fr;}
+  .gallery-grid{grid-template-columns:repeat(3,1fr);grid-template-rows:180px 180px;}
+  .gallery-item:nth-child(1){grid-column:span 1;grid-row:span 1;}
+  .gallery-item:nth-child(4){grid-column:span 1;}
+  .about-images{height:380px;}
+}
+@media(max-width:600px){
+  section{padding:4rem 5%;}
+  .menu-grid{grid-template-columns:1fr 1fr;}
+  .specials-grid{grid-template-columns:1fr 1fr;}
+  .testimonials-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .footer-grid{grid-template-columns:1fr;}
+  .about-pillars{grid-template-columns:1fr 1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- WHATSAPP FLOAT -->
+<a class="whatsapp-float" href="https://wa.me/919655728292" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="https://welcomecafe.in/wp-content/uploads/2023/09/Welcome-Cafe-Logo-Final.jpg" alt="Welcome Cafe Logo" onerror="this.style.display='none'"/>
+    <div class="nav-logo-text"><span>Welcome</span> Cafee</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-order" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Visit Us</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Kosakulam · Madurai</div>
+    <h1 class="hero-title">A Sip of<br/><em>Serenity</em>,<br/>A Slice of Life</h1>
+    <p class="hero-desc">Your go-to destination in Kosakulam for freshly brewed coffee, mouth-watering snacks, creamy ice cream, and celebration cakes. A warm, inviting space crafted for moments that matter.</p>
+    <div class="hero-cta">
+      <a href="#menu" class="btn-primary">Explore Our Menu</a>
+      <a href="#contact" class="btn-secondary">Find Us</a>
+    </div>
+    <div class="hero-pills">
+      <span class="pill">☕ Coffee</span>
+      <span class="pill">🍕 Pizza</span>
+      <span class="pill">🍔 Burgers</span>
+      <span class="pill">🍦 Ice Cream</span>
+      <span class="pill">🎂 Cakes</span>
+      <span class="pill">🥤 Beverages</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-photo-main" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=900&q=85" alt="Welcome Cafe interior"/>
+    <div class="hero-photo-overlay"></div>
+    <div class="hero-badge">
+      <div class="hero-badge-rating">4.8★</div>
+      <div class="hero-badge-stars">★★★★★</div>
+      <div class="hero-badge-label">Google Rating</div>
+    </div>
+    <div class="hero-float-tag">Est. in Madurai</div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span>Fresh Coffee</span><span class="marquee-dot">✦</span>
+    <span>Calcutta Chaat</span><span class="marquee-dot">✦</span>
+    <span>Burgers</span><span class="marquee-dot">✦</span>
+    <span>Pizza</span><span class="marquee-dot">✦</span>
+    <span>Milkshakes</span><span class="marquee-dot">✦</span>
+    <span>Birthday Cakes</span><span class="marquee-dot">✦</span>
+    <span>Flavoured Soda</span><span class="marquee-dot">✦</span>
+    <span>Ice Cream</span><span class="marquee-dot">✦</span>
+    <span>Sandwiches</span><span class="marquee-dot">✦</span>
+    <span>Mojito</span><span class="marquee-dot">✦</span>
+    <span>French Fries</span><span class="marquee-dot">✦</span>
+    <span>Samosa</span><span class="marquee-dot">✦</span>
+    <span>Fresh Coffee</span><span class="marquee-dot">✦</span>
+    <span>Calcutta Chaat</span><span class="marquee-dot">✦</span>
+    <span>Burgers</span><span class="marquee-dot">✦</span>
+    <span>Pizza</span><span class="marquee-dot">✦</span>
+    <span>Milkshakes</span><span class="marquee-dot">✦</span>
+    <span>Birthday Cakes</span><span class="marquee-dot">✦</span>
+    <span>Flavoured Soda</span><span class="marquee-dot">✦</span>
+    <span>Ice Cream</span><span class="marquee-dot">✦</span>
+    <span>Sandwiches</span><span class="marquee-dot">✦</span>
+    <span>Mojito</span><span class="marquee-dot">✦</span>
+    <span>French Fries</span><span class="marquee-dot">✦</span>
+    <span>Samosa</span><span class="marquee-dot">✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-images">
+      <img class="about-img-main" src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=700&q=85" alt="Cafe interior"/>
+      <img class="about-img-accent" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&q=85" alt="Coffee"/>
+      <div class="about-since">
+        <div class="about-since-year">WC</div>
+        <div class="about-since-text">Since Madurai</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-label">Who We Are</div>
+      <h2 class="section-title">More Than<br/>a <em>Café</em></h2>
+      <p>Welcome to Welcome Cafee — your go-to destination for delicious and mouth-watering treats in Kosakulam, Madurai. Our café is a warm and inviting space, perfect for catching up with friends or enjoying a cozy afternoon alone.</p>
+      <p>With a welcoming atmosphere and friendly staff, we strive to make every visit a memorable one. Our menu features a fusion of Indian and Western flavours that will surely tantalize your taste buds — from crunchy and spicy to sweet and refreshing.</p>
+      <div class="about-pillars">
+        <div class="pillar"><div class="pillar-icon">🌿</div><div class="pillar-name">Quality</div><div class="pillar-desc">Fresh ingredients, every time</div></div>
+        <div class="pillar"><div class="pillar-icon">❤️</div><div class="pillar-name">Passion</div><div class="pillar-desc">A taste worth falling for</div></div>
+        <div class="pillar"><div class="pillar-icon">😋</div><div class="pillar-name">Flavour</div><div class="pillar-desc">Bold, honest, delicious</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="section-label">What We Serve</div>
+  <h2 class="section-title">Our <em>Menu</em></h2>
+  <div class="menu-tabs">
+    <button class="menu-tab active" onclick="filterMenu('all',this)">All</button>
+    <button class="menu-tab" onclick="filterMenu('snacks',this)">Snacks</button>
+    <button class="menu-tab" onclick="filterMenu('mains',this)">Mains</button>
+    <button class="menu-tab" onclick="filterMenu('beverages',this)">Beverages</button>
+    <button class="menu-tab" onclick="filterMenu('sweets',this)">Sweets & Desserts</button>
+  </div>
+  <div class="menu-grid" id="menu-grid">
+    <div class="menu-card" data-cat="mains">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80" alt="Burger"/>
+      <div class="menu-card-body"><div class="menu-card-name">Burger</div><div class="menu-card-desc">Bite into flavorful deliciousness — juicy, stacked, and made fresh.</div><span class="menu-card-tag">Mains</span></div>
+    </div>
+    <div class="menu-card" data-cat="mains">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80" alt="Pizza"/>
+      <div class="menu-card-body"><div class="menu-card-name">Pizza</div><div class="menu-card-desc">Bringing families and friends together, one slice at a time.</div><span class="menu-card-tag">Mains</span></div>
+    </div>
+    <div class="menu-card" data-cat="snacks">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=400&q=80" alt="Samosa"/>
+      <div class="menu-card-body"><div class="menu-card-name">Samosa</div><div class="menu-card-desc">Savor the flavor of tradition — crispy, golden, and spiced just right.</div><span class="menu-card-tag">Snacks</span></div>
+    </div>
+    <div class="menu-card" data-cat="snacks">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80" alt="French Fries"/>
+      <div class="menu-card-body"><div class="menu-card-name">French Fries</div><div class="menu-card-desc">A little taste of heaven in every perfectly crispy fry.</div><span class="menu-card-tag">Snacks</span></div>
+    </div>
+    <div class="menu-card" data-cat="snacks">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400&q=80" alt="Sandwich"/>
+      <div class="menu-card-body"><div class="menu-card-name">Sandwiches</div><div class="menu-card-desc">Fresh and satisfying bites of goodness, loaded with flavour.</div><span class="menu-card-tag">Snacks</span></div>
+    </div>
+    <div class="menu-card" data-cat="snacks">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1619740455993-9e612b1af08a?w=400&q=80" alt="Puffs"/>
+      <div class="menu-card-body"><div class="menu-card-name">Puffs</div><div class="menu-card-desc">Pump up the flavour with our flaky, golden baked puffs.</div><span class="menu-card-tag">Snacks</span></div>
+    </div>
+    <div class="menu-card" data-cat="beverages">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&q=80" alt="Hot Beverages"/>
+      <div class="menu-card-body"><div class="menu-card-name">Hot Beverages</div><div class="menu-card-desc">Savor the richness of every sip — from chai to cappuccino.</div><span class="menu-card-tag">Beverages</span></div>
+    </div>
+    <div class="menu-card" data-cat="beverages">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=400&q=80" alt="Milkshake"/>
+      <div class="menu-card-body"><div class="menu-card-name">Milk Shake</div><div class="menu-card-desc">An unmatched and deliciously creamy experience in every glass.</div><span class="menu-card-tag">Beverages</span></div>
+    </div>
+    <div class="menu-card" data-cat="beverages">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80" alt="Mojito"/>
+      <div class="menu-card-body"><div class="menu-card-name">Mojito</div><div class="menu-card-desc">Get your refreshing summer fix with a tangy, minty Mojito.</div><span class="menu-card-tag">Beverages</span></div>
+    </div>
+    <div class="menu-card" data-cat="beverages">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1499638673689-79a0b5115d87?w=400&q=80" alt="Cold Beverages"/>
+      <div class="menu-card-body"><div class="menu-card-name">Cold Beverages</div><div class="menu-card-desc">Beat the Madurai heat with our icy, flavourful cold drinks.</div><span class="menu-card-tag">Beverages</span></div>
+    </div>
+    <div class="menu-card" data-cat="sweets">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1567171466295-4afa63d45416?w=400&q=80" alt="Birthday Cake"/>
+      <div class="menu-card-body"><div class="menu-card-name">Cakes & Birthday Cakes</div><div class="menu-card-desc">Creating sweet moments and memories, one beautiful cake at a time.</div><span class="menu-card-tag">Sweets</span></div>
+    </div>
+    <div class="menu-card" data-cat="sweets">
+      <img class="menu-card-img" src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400&q=80" alt="Ice Cream"/>
+      <div class="menu-card-body"><div class="menu-card-name">Ice Cream</div><div class="menu-card-desc">Scoop up happiness — in every flavour you could dream of.</div><span class="menu-card-tag">Sweets</span></div>
+    </div>
+  </div>
+  <div class="menu-more">
+    <a href="https://welcomecafe.in/calcutta-chaat-menu/" target="_blank" class="btn-primary">View Full Menu</a>
+  </div>
+</section>
+
+<!-- SPECIALS -->
+<section class="specials">
+  <div class="section-label">Our Speciality</div>
+  <h2 class="section-title">Made with <em>Love</em></h2>
+  <div class="specials-grid">
+    <div class="special-card">
+      <img class="special-icon" src="https://images.unsplash.com/photo-1601050690597-df0568f70950?w=120&q=80" alt="Snacks"/>
+      <div class="special-name">Snacks</div>
+      <div class="special-desc">Every time and moment, crunch-tastically good</div>
+    </div>
+    <div class="special-card">
+      <img class="special-icon" src="https://images.unsplash.com/photo-1567171466295-4afa63d45416?w=120&q=80" alt="Cakes"/>
+      <div class="special-name">Cakes</div>
+      <div class="special-desc">Slice into sweet memories with every celebration</div>
+    </div>
+    <div class="special-card">
+      <img class="special-icon" src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=120&q=80" alt="Sweets"/>
+      <div class="special-name">Sweets & Desserts</div>
+      <div class="special-desc">For moments that deserve something truly sweet</div>
+    </div>
+    <div class="special-card">
+      <img class="special-icon" src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=120&q=80" alt="Ice Cream"/>
+      <div class="special-name">Juice & Ice Cream</div>
+      <div class="special-desc">From freezer to fantasy — it's ice cream time!</div>
+    </div>
+    <div class="special-card">
+      <img class="special-icon" src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=120&q=80" alt="Beverage"/>
+      <div class="special-name">Beverages</div>
+      <div class="special-desc">One sip and you're on a summer vacation</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <div class="section-label">Feast Your Eyes</div>
+    <h2 class="section-title">Our <em>Gallery</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=700&q=85" alt="Cafe"/><div class="gallery-overlay"><span>Welcome Cafee</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80" alt="Burger"/><div class="gallery-overlay"><span>Burgers</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80" alt="Pizza"/><div class="gallery-overlay"><span>Pizza</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=700&q=80" alt="Coffee"/><div class="gallery-overlay"><span>Coffee</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=400&q=80" alt="Shake"/><div class="gallery-overlay"><span>Milkshake</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=400&q=80" alt="Ice Cream"/><div class="gallery-overlay"><span>Ice Cream</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1567171466295-4afa63d45416?w=400&q=80" alt="Cake"/><div class="gallery-overlay"><span>Cakes</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=400&q=80" alt="Fries"/><div class="gallery-overlay"><span>French Fries</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=400&q=80" alt="Mojito"/><div class="gallery-overlay"><span>Mojito</span></div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=400&q=80" alt="Sandwich"/><div class="gallery-overlay"><span>Sandwiches</span></div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="section-label">Happy Customers</div>
+  <h2 class="section-title">What People <em>Say</em></h2>
+  <div class="testimonials-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Absolutely impressed with the bakery! The pastries were fresh, the cakes were divine, and the staff was incredibly friendly. A true gem for all dessert enthusiasts!"</p>
+      <div class="testi-author"><div class="testi-avatar">M</div><div><div class="testi-name">Muthu C</div><div class="testi-tag">Regular Customer</div></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"The snacks were good and great value for money and the service was attentive and efficient. Loved every bite — will definitely come back!"</p>
+      <div class="testi-author"><div class="testi-avatar">S</div><div><div class="testi-name">Seenu Sivam</div><div class="testi-tag">Happy Visitor</div></div></div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Best café experience in Kosakulam! The cold beverages are absolutely refreshing and the ambiance is so cozy. Perfect spot for evenings with friends."</p>
+      <div class="testi-author"><div class="testi-avatar">P</div><div><div class="testi-name">Priya R</div><div class="testi-tag">Local Foodie</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DAILY ESCAPE -->
+<section class="escape">
+  <div class="escape-left">
+    <div class="section-label">Our Promise</div>
+    <h2 class="section-title">Your Daily<br/><em>Escape</em> to<br/>Deliciousness</h2>
+    <p>At Welcome Cafee, we believe in the magic of freshly prepared food and drinks. Our kitchen works its magic daily to bring you a delightful array of snacks, beverages, and baked treats that taste as good as they look.</p>
+    <p>Step into our warm and inviting café, where the aroma of freshly brewed coffee welcomes you. It's the perfect spot for a quick morning snack, a leisurely brunch, or a sweet afternoon pick-me-up.</p>
+    <a href="#contact" class="btn-primary">Come Visit Us</a>
+  </div>
+  <div class="escape-right">
+    <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?w=800&q=85" alt="Cafe atmosphere"/>
+    <div class="escape-right-overlay"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Come Find Us</div>
+  <h2 class="section-title">Get in <em>Touch</em></h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Address</div>
+          <div class="contact-value">92/14 – A1, Pandiyan Nagar,<br/>Kosakulam, Madurai,<br/>Tamil Nadu, India</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Phone & WhatsApp</div>
+          <div class="contact-value"><a href="tel:+919655728292">+91 96557 28292</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:contact@welcomecafe.in">contact@welcomecafe.in</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕘</div>
+        <div>
+          <div class="contact-label">Opening Hours</div>
+          <div class="contact-value">Monday – Sunday<br/>9:30 AM – 10:30 PM</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🌐</div>
+        <div>
+          <div class="contact-label">Follow Us</div>
+          <div class="contact-socials">
+            <a class="social-link" href="https://www.instagram.com/welcomecafeemadurai/" target="_blank">IG</a>
+            <a class="social-link" href="https://www.facebook.com/welcomecafeemadurai/" target="_blank">FB</a>
+            <a class="social-link" href="https://www.youtube.com/@WelcomeCafeeMadurai" target="_blank">YT</a>
+            <a class="social-link" href="https://wa.me/919655728292" target="_blank">WA</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <iframe class="map-frame"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.6!2d78.1185112!3d9.9632072!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00c710b5e89ab7%3A0x1414eecfb3288ea6!2sWelcome%20Cafee!5e0!3m2!1sen!2sin!4v1680000000000"
+        allowfullscreen loading="lazy" title="Welcome Cafee Map"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name"><span>Welcome</span> Cafee</div>
+      <p class="footer-brand-desc">Your go-to destination for delicious treats, coffee, and memorable moments in Kosakulam, Madurai.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#menu">Our Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="https://welcomecafe.in/privacy-policy/" target="_blank">Privacy Policy</a></li>
+        <li><a href="https://welcomecafe.in/terms-and-conditions" target="_blank">Terms & Conditions</a></li>
+        <li><a href="https://welcomecafe.in/return-and-refund-policies/" target="_blank">Refund Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <ul>
+        <li><a href="#">Mon – Sun</a></li>
+        <li><a href="#">9:30 AM – 10:30 PM</a></li>
+      </ul>
+      <div class="hours-badge" style="margin-top:1rem;">Open Today 🟢</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2024 Welcome Cafee, Madurai. All rights reserved.</div>
+    <div class="footer-copy">92/14-A1, Pandiyan Nagar, Kosakulam, Madurai</div>
+  </div>
+</footer>
+
+<script>
+  // Menu filter
+  function filterMenu(cat, btn) {
+    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.menu-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.style.display = 'block';
+        card.style.animation = 'fadeIn 0.35s ease';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const el = document.querySelector(a.getAttribute('href'));
+      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+<style>
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</body>
+</html>
